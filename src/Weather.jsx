@@ -72,7 +72,7 @@ const Weather = () => {
     return (
         <div className='app-wrap'>
 
-            <img alt='bg-image' className='bgImage' src={`./public/images/${weatherData?.weather[0]?.main}.jpg`}/>
+            <img alt='bg-image' className='bgImage' src={`./images/${weatherData?.weather[0]?.main}.jpg`}/>
             
             <header>
                 <form onSubmit={handleSubmit}>
