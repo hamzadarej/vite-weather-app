@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 
 
 const Weather = () => {
     const baseUrl = import.meta.env.VITE_API_URL;
-    const key= import.meta.env.VITE_API_KEY;
+    const key = import.meta.env.VITE_API_KEY;
 
     const [userInput, setUserInput] = useState("");
     const [error, setError] = useState("");
@@ -20,7 +20,7 @@ const Weather = () => {
                 }
             )
             .catch(() => {
-                const error="Please enter a valid city name"
+                const error = "Please enter a valid city name"
                 setError(error)
                 console.error(error);
             });
@@ -34,11 +34,11 @@ const Weather = () => {
     const direction = weatherData?.wind?.deg;
 
     const windD = [
-        { direction: "N", start: 310, end: 360 },
-        { direction: "N", start: 1, end: 50 },
-        { direction: "W", start: 230, end: 309 },
-        { direction: "S", start: 130, end: 229 },
-        { direction: "E", start: 49, end: 129 },
+        {direction: "N", start: 310, end: 360},
+        {direction: "N", start: 1, end: 50},
+        {direction: "W", start: 230, end: 309},
+        {direction: "S", start: 130, end: 229},
+        {direction: "E", start: 49, end: 129},
     ];
 
     const findDirection = windD.find(
@@ -51,27 +51,29 @@ const Weather = () => {
     const year = new Date();
     const getFullYear = year.getFullYear();
     const getDayName = () => {
-        return year.toLocaleDateString("en-US", { weekday: "long" });
+        return year.toLocaleDateString("en-US", {weekday: "long"});
     };
     const getTime = () => {
-        return year.toLocaleDateString("en-US", { day: "numeric" });
+        return year.toLocaleDateString("en-US", {day: "numeric"});
     };
     const getMonthName = () => {
-        return year.toLocaleDateString("en-US", { month: "long" });
+        return year.toLocaleDateString("en-US", {month: "long"});
     };
 
     useEffect(() => {
         // prevent api call show localStorage data
-        if (JSON.parse(localStorage.getItem("weather"))?.weather?.length){
+        if (JSON.parse(localStorage.getItem("weather"))?.weather?.length) {
             setWeatherData(JSON.parse(localStorage.getItem("weather")))
         } else {
             getWeather('leipzig')
         }
     }, []);
 
-
     return (
-        <div className={`${weatherData?.weather[0]?.main}  app-wrap`}>
+        <div className='app-wrap'>
+
+            <img alt='bg-image' className='bgImage' src={`./public/images/${weatherData?.weather[0]?.main}.jpg`}/>
+            
             <header>
                 <form onSubmit={handleSubmit}>
                     <input
@@ -80,7 +82,7 @@ const Weather = () => {
                         placeholder="Enter a City Name"
                         onChange={(e) => setUserInput(e.target.value)}
                     />
-                    <input type="submit" id="submit" value="Search" />
+                    <input type="submit" id="submit" value="Search"/>
                 </form>
                 <div className='error'>{error}</div>
             </header>
