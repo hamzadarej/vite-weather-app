@@ -55,7 +55,7 @@ const Weather = () => {
   const min = sys?.sunrise; // sunrise
   const max = sys?.sunset; // sunset
   const now = Math.floor(Date.now() / 1000);
-  const percentage = Math.floor((now - min) / (max - min));
+  const percentage = (now - min) / (max - min) * 100;
   function toHoursAndMinutes(totalMinutes) {
     const sunriseDate = new Date(totalMinutes * 1000);
     return sunriseDate.toLocaleTimeString([], {
@@ -74,6 +74,14 @@ const Weather = () => {
       getWeather("leipzig");
     }
   }, []);
+
+  const containerSize = 180;
+  const radius = containerSize / 2 + 10; // subtract sun radius
+  const angle = (Math.PI * percentage) / 100 ;
+  const centerY = containerSize / 2;
+  const centerX = containerSize / 2;
+  const topSpace =centerY - radius * Math.sin(Math.PI - angle)
+  const xSpace = centerX + radius * Math.cos(Math.PI - angle);
 
   return (
     <div className="app-wrap">
@@ -151,8 +159,7 @@ const Weather = () => {
           <div className="sun-position">
             <span className="sun-time">{toHoursAndMinutes(min)}</span>
             <div className="half-circle">
-              <span className="sun" style={{ left: percentage + "%" }} />
-              <span className="hide-half-circle" />
+              <span className="sun" style={{ left: xSpace + "px",top:topSpace + 'px'}} />
             </div>
             <span className="circle-line" />
             <span className="sun-time">{toHoursAndMinutes(max)}</span>
