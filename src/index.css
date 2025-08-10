@@ -1,17 +1,18 @@
 .app-wrap {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   color: black;
   border: #df8e00 1px solid;
   position: relative;
+  overflow: hidden;
 }
 .bgImage {
   position: absolute;
- height: 100%;
+  height: 100%;
   width: 100%;
   z-index: -1;
   top: 0;
@@ -24,7 +25,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 15px 15px;
+  padding: 30px 15px 15px;
 
   input {
     width: 100%;
@@ -49,70 +50,69 @@ header input:focus {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
-  main {
-    flex: 1 1 100%;
-    padding: 25px 25px 50px;
+main {
+  flex: 1 1 100%;
+  padding: 25px 25px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #666666;
+  text-shadow: 0 4px rgba(0, 0, 0, 0.2);
+
+  .location .city {
+    font-size: 32px;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+  .location .date {
+    font-size: 16px;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+  .temp {
+    font-size: 102px;
+    font-weight: 900;
+    margin: 5px 0;
+  }
+  span {
+    font-weight: 700;
+  }
+  .wind {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    color:#666666;
-    text-shadow: 0 4px rgba(0, 0, 0, 0.2);
-
-    .location .city {
-      font-size: 32px;
-      margin-bottom: 5px;
-      letter-spacing: 2px;
+    letter-spacing: 2px;
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: 700;
+    div {
+      margin: 2px 0;
       font-weight: 700;
-    }
-    .location .date {
-      font-size: 16px;
-      letter-spacing: 2px;
-      font-weight: 700;
-    }
-    .temp {
-      font-size: 102px;
-      font-weight: 900;
-      margin: 5px 0;
-    }
-    span {
-      font-weight: 700;
-    }
-    .wind {
-      display: flex;
-      flex-direction: column;
-      letter-spacing: 2px;
-      margin: 20px 0;
-      font-size: 20px;
-      font-weight: 700;
-      div {
-        margin: 2px 0;
-        font-weight: 700;
-      }
-    }
-    .feelsContainer {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-top: -5px;
-      margin-bottom: 5px;
-    }
-
-    .feels {
-      font-size: 20px;
-      margin-bottom: 10px;
-      margin-top: -50px;
-      letter-spacing: 2px;
-      font-weight: 900;
-    }
-
-    .humidity {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 2px;
     }
   }
+  .feelsContainer {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-top: -5px;
+    margin-bottom: 5px;
+  }
 
+  .feels {
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: -50px;
+    letter-spacing: 2px;
+    font-weight: 900;
+  }
+
+  .humidity {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+}
 
 .weather {
   font-size: 32px;
@@ -130,4 +130,57 @@ i {
   font-size: 25px;
   margin-bottom: 10px;
   margin-top: -5px;
+}
+
+.half-circle {
+  margin-top: 40px;
+  width: 80%;
+  height: 200px;
+  position: relative;
+  border-radius: 100%;
+  border: 1px solid gray;
+}
+.sun {
+  top: -8px;
+  bottom: 0;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: orange;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 8px rgba(255, 165, 0, 0.7);
+}
+.hide-half-circle {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 180px;
+  background-color: white;
+}
+
+.sun-position {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.circle-line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: gray;
+  top: 55%;
+  right: 0;
+  left: 0;
+}
+
+.sun-time {
+  font-size: 14px;
 }
